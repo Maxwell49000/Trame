@@ -1,0 +1,56 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  name          String
+  password_hash String    @map("password_hash")
+  role          Role      @default(USER)
+  is_active     Boolean   @default(true) @map("is_active")
+  created_at    DateTime  @default(now()) @map("created_at")
+  updated_at    DateTime  @updatedAt @map("updated_at")
+  sites         Site[]
+  sessions      Session[]
+
+  @@map("users")
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  token_hash String   @unique @db.Char(64)
+  csrf_token String   @db.VarChar(64)
+  expires_at DateTime @map("expires_at")
+  created_at DateTime @default(now()) @map("created_at")
+  user_id    Int      @map("user_id")
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@index([expires_at])
+  @@map("sessions")
+}
+
+model Site {
+  id         Int       @id @default(autoincrement())
+  name       String
+  slug       String    @unique
+  config     Json?
+  owner_id   Int?      @map("owner_id")
+  owner      User?     @relation(fields: [owner_id], references: [id], onDelete: SetNull)
+  created_at DateTime? @default(now()) @map("created_at")
+  updated_at DateTime? @updatedAt @map("updated_at")
+
+  @@index([owner_id])
+  @@map("sites")
+}

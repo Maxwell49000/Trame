@@ -1,0 +1,24 @@
+{
+    "name": "trame-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "node --test"
+    },
+    "dependencies": {
+        "@quasar/extras": "^2.0.3",
+        "quasar": "^2.13.0",
+        "vue": "^3.2.0",
+        "vue-router": "^4.2.0",
+        "vuedraggable": "^4.1.0"
+    },
+    "devDependencies": {
+        "@quasar/vite-plugin": "^1.12.0",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "vite": "^8.2.0"
+    }
+}
