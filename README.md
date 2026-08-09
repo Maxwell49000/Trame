@@ -4,6 +4,18 @@ Trame est un éditeur visuel de sites one-page. Il permet de composer une page, 
 
 Le projet met en avant une application complète et exploitable : authentification, rôles, isolation des données, génération statique, export ZIP, conteneurisation et intégration continue.
 
+## Aperçus
+
+![Page de connexion de Trame](docs/screenshots/login.png)
+
+| Atelier des projets | Éditeur et aperçu mobile |
+| --- | --- |
+| ![Tableau de bord](docs/screenshots/dashboard.png) | ![Éditeur avec aperçu mobile](docs/screenshots/editor-mobile-preview.png) |
+
+![Éditeur avec aperçu desktop](docs/screenshots/editor-desktop-preview.png)
+
+![Mode présentation mobile](docs/screenshots/presentation-mobile.png)
+
 ## Fonctionnalités
 
 - création à partir d’une page vierge ou d’un modèle portfolio/studio ;
